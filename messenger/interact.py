@@ -79,7 +79,7 @@ class Interact:
     # Add a single message
     ################################################## 
     def add(self):
-        self._p_messages.add(control.get_write_sec_level(self._controlLevel),
+        self._p_messages.add(control.get_write_con_level(self._controlLevel, self._controlLevel),
                              self._prompt_for_line("message"),
                              self._username,
                              self._prompt_for_line("date"))

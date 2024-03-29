@@ -79,19 +79,19 @@ class Message:
     ################################################## 
     def update_text(self, fun, subControl):
         choice = False
-        changing_sec_level = False
+        changing_con_level = False
         if not control.check_write_access(subControl, self.control_level):
             choice = input("Your security level is higher than the messages. Edditing the message will require an increase in the security level of hte message. Continue? y/n > ").upper() == "Y"
             if choice:
-                changing_sec_level = True
+                changing_con_level = True
             else:
                 return
         new_text = fun('message')
         self._text = new_text
-        if not changing_sec_level:
-            changing_sec_level = input("Change security level of the message? y/n > ").upper() == "Y"
-        if changing_sec_level:
-            self.control_level = control.get_write_sec_level(subControl)
+        if not changing_con_level:
+            changing_con_level = input("Change security level of the message? y/n > ").upper() == "Y"
+        if changing_con_level:
+            self.control_level = control.get_write_con_level(subControl, self.control_level)
 
     ##################################################
     # MESSAGE :: CLEAR
